@@ -1,0 +1,12 @@
+<h1>Car Posts</h1>
+<form action="/" method="GET">
+    <input type="text" class="search" name="search" placeholder="Search" value="{{query.search}}">
+    <input type="number" name="priceFrom" class="difficulty" placeholder="Price from" value="{{query.priceFrom}}">
+    <input type="number" name="priceTo" class="difficulty" placeholder="Price to" value="{{query.priceTo}}">
+    <input type="submit" value="Search">
+</form>
+<div class="cars">
+    {{#each cars}}
+    {{> car}}
+    {{/each}}
+</div>

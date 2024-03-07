@@ -1,0 +1,23 @@
+{{#with car}}
+<h1>{{name}}</h1>
+<img class="car" src="/static/images/{{image}}">
+<div class="details">
+    <p><span>Description: </span>{{description}}</p>
+    <p><span>Price: </span>{{price}} BGN</p>
+    {{#if isOwner}}
+    <a class="btn" href="/attach/accessory/{{id}}">Attach Accessory</a>
+    <a class="btn" href="/edit/car/{{id}}">Edit</a>
+    <a class="btn" href="/delete/car/{{id}}">Delete</a>
+    {{/if}}
+</div>
+{{#if accessories}}
+<h2>Accessories</h2>
+{{/if}}
+<div class="accessories">
+    {{#if accessories}}
+    {{#each accessories}}
+    {{> accessory}}
+    {{/each}}
+    {{/if}}
+</div>
+{{/with}}
