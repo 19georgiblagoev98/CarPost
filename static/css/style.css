@@ -6,6 +6,11 @@ header {
     background-color: #607588;
 }
 
+form.attachAccessory {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
 .container {
     position: relative;
     min-height: 94.1vh;
@@ -13,6 +18,7 @@ header {
 
 header ul {
     margin: 0;
+    padding: 0;
 }
 
 header ul li {
@@ -61,6 +67,8 @@ footer {
     color: white;
     font-size: 1.1em;
     width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 img {
@@ -74,25 +82,26 @@ img.logo {
     float: left;
 }
 
-img.car {
+img.carImage {
     display: block;
     margin: auto;
     text-align: center;
-    height: 10em;
+    height: 11em;
     width: 15em;
 }
 
+div.details .btn {
+    width: 20%
+}
+
 div.details {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 div.details p {
     text-align: center;
-}
-
-div.form {
-    width: 100%;
-    margin: auto;
 }
 
 div.cars {
@@ -136,7 +145,7 @@ span {
     font-size: 1.1em;
 }
 
-.notifications {
+.errors {
     margin: auto;
     text-align: center;
     width: 35%;
@@ -148,7 +157,11 @@ span {
     border-radius: 0.5em;
 }
 
-.accessory {
+h3 {
+    text-align: center;
+}
+
+div.accessory {
     display: inline-block;
     border: 0.5px solid #a99898;
     text-align: center;
@@ -174,6 +187,11 @@ form label {
 
 main form {
     width: 20%;
+    margin: auto;
+}
+
+.notFoundImage {
+    display: block;
     margin: auto;
 }
 

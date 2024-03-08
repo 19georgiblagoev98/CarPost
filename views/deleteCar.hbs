@@ -1,7 +1,13 @@
-<h1>Delete Car</h1>
-<div class="form">
+<div>
+    <h1>
+        Delete Car
+    </h1>
     {{#with car}}
     <form action="/delete/car/{{id}}" method="post">
+        <h2>
+            {{name}}
+        </h2>
+        <img class="carImage" src="/static/images/{{image}}">
         <input type="submit" value="Confirm">
     </form>
     {{/with}}
