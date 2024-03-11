@@ -1,7 +1,7 @@
 body,
 main,
-main form,
-img.carImage,
+form,
+.carImage,
 .errors {
     margin: auto;
 }
@@ -11,28 +11,28 @@ input[type=submit] {
     background-color: #607588;
 }
 
-header ul {
+ul {
     margin: 0;
     padding: 0;
 }
 
-header ul li,
-main a.btn,
-div.car,
-div.accessory {
+li,
+.btn,
+.car,
+.accessory {
     display: inline-block;
 }
 
-header ul li {
+li {
     vertical-align: middle;
 }
 
-header ul li a,
-main a.btn {
+.navAttribute,
+.btn {
     text-decoration: none;
 }
 
-header ul li a,
+.navAttribute,
 a,
 h1,
 h2,
@@ -40,31 +40,31 @@ input[type=submit] {
     text-transform: uppercase;
 }
 
-header ul li a,
-main a.btn,
+.navAttribute,
+.btn,
 footer,
 .errors,
-form label,
+label,
 input[type=submit] {
     color: white;
 }
 
-header ul li a {
+.navAttribute {
     font-weight: bold;
     margin: 0.5em;
 }
 
-header ul li a:hover,
+.navAttribute:hover,
 input[type=submit]:hover {
     cursor: pointer;
 }
 
-header ul li a:hover,
-main a.btn:hover {
+.navAttribute:hover,
+.btn:hover {
     text-decoration: underline;
 }
 
-main a.btn,
+.btn,
 input[type=text],
 input[type=number],
 input[type=password],
@@ -73,37 +73,37 @@ textarea {
     padding: 0.5em;
 }
 
-main a.btn,
+.btn,
 footer,
-div.accessory,
-img.carImage,
+.accessory,
+.carImage,
 .errors,
 h1,
 h2,
 h3,
-form label {
+label {
     text-align: center;
 }
 
-main a.btn,
+.btn,
 input[type=submit] {
     width: 50%;
 }
 
-main a.btn,
+.btn,
 footer,
-form label {
+label {
     background: #607588;
 }
 
-main a.btn {
+.btn {
     margin: 1em;
     margin-left: 25%;
     margin-right: 25%;
 }
 
-main form,
-div.details a {
+form,
+.detailsAttribute {
     width: 20%;
 }
 
@@ -127,39 +127,39 @@ footer {
     bottom: 0;
 }
 
-div.cars,
-div.accessories,
-div.details,
-div.details a {
+.cars,
+.accessories,
+.details,
+.detailsAttribute {
     display: flex;
 }
 
-div.cars,
-div.accessories,
-div.details a {
+.cars,
+.accessories,
+.detailsAttribute {
     justify-content: center;
 }
 
-div.car,
-div.accessory {
+.car,
+.accessory {
     border: 0.5px solid #a99898;
 }
 
-div.car,
-img.logo,
-img.carImage {
+.car,
+.logo,
+.carImage {
     width: 15em;
 }
 
-div.car {
+.car {
     margin: 1em 0.2em;
 }
 
-div.accessory {
+.accessory {
     margin: 0em 0.2em 5em;
 }
 
-div.details {
+.details {
     flex-direction: column;
     align-items: center;
 }
@@ -169,17 +169,17 @@ img {
     max-width: 20em;
 }
 
-img.logo {
+.logo {
     height: 4em;
     float: left;
 }
 
-img.carImage,
-form label {
+.carImage,
+label {
     display: block;
 }
 
-img.carImage {
+.carImage {
     height: 11em;
 }
 
@@ -201,12 +201,12 @@ span {
     font-weight: bolder;
 }
 
-form label,
+label,
 input[type=submit] {
     padding: 0.7em;
 }
 
-form.attachAccessory {
+.attachAccessory {
     margin-top: 1em;
     margin-bottom: 1em;
 }
