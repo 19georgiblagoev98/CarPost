@@ -11,7 +11,7 @@ module.exports = {
             });
         } catch (err) {
             res.locals.errors = mapError(err);
-            res.redirect('/notFound');
+            return res.redirect('/notFound');
         }
     }
 };

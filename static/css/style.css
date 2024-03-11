@@ -167,11 +167,6 @@ form.attachAccessory {
     margin-bottom: 1em;
 }
 
-.notFoundImage {
-    display: block;
-    margin: auto;
-}
-
 input[type=submit] {
     background-color: #607588;
     border: none;
