@@ -7,8 +7,7 @@ async function initDatabase() {
     try {
         await mongoose.connect(connectionString, {
             useNewUrlParser: true,
-            useUnifiedTopology: true,
-            autoIndex: false
+            useUnifiedTopology: true
         });
         mongoose.connection.on('error', (err) => {
             throw new Error(err);
