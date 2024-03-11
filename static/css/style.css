@@ -85,105 +85,6 @@ footer {
     margin: 1em 0.2em;
 }
 
-form,
-body,
-main,
-.carImage,
-.errors {
-    margin: auto;
-}
-
-input[type=submit],
-header {
-    background-color: #607588;
-}
-
-li,
-.btn,
-.accessory,
-.car {
-    display: inline-block;
-}
-
-h1,
-h2,
-label,
-input[type=submit],
-a,
-.navAttribute {
-    text-transform: uppercase;
-}
-
-label,
-input[type=submit],
-footer,
-.navAttribute,
-.errors,
-.btn {
-    color: white;
-}
-
-input[type=submit]:hover,
-.navAttribute:hover {
-    cursor: pointer;
-}
-
-select,
-input[type=text],
-textarea,
-input[type=number],
-input[type=password],
-.btn {
-    padding: 0.5em;
-}
-
-h1,
-h2,
-label,
-h3,
-footer,
-.carImage,
-.btn,
-.errors,
-.accessory {
-    text-align: center;
-}
-
-input[type=submit],
-.btn {
-    width: 50%;
-}
-
-label,
-footer,
-.btn {
-    background: #607588;
-}
-
-form,
-.detailsAttribute {
-    width: 20%;
-}
-
-span,
-footer {
-    font-size: 1.1em;
-}
-
-select,
-input[type=text],
-textarea,
-input[type=number],
-input[type=password],
-footer {
-    width: 100%;
-}
-
-label,
-.carImage {
-    display: block;
-}
-
 label,
 input[type=submit] {
     padding: 0.7em;
@@ -199,14 +100,29 @@ input[type=password] {
     margin: 0.5em auto 2em;
 }
 
-.navAttribute,
-.btn {
-    text-decoration: none;
+select,
+input[type=text],
+textarea,
+input[type=number],
+input[type=password],
+footer {
+    width: 100%;
 }
 
-.btn:hover,
-.navAttribute:hover {
-    text-decoration: underline;
+input[type=submit],
+header {
+    background-color: #607588;
+}
+
+span,
+footer {
+    font-size: 1.1em;
+}
+
+.carImage,
+.logo,
+.car {
+    width: 15em;
 }
 
 .details,
@@ -214,6 +130,16 @@ input[type=password] {
 .accessories,
 .cars {
     display: flex;
+}
+
+.btn,
+.navAttribute {
+    text-decoration: none;
+}
+
+.btn:hover,
+.navAttribute:hover {
+    text-decoration: underline;
 }
 
 .detailsAttribute,
@@ -227,8 +153,82 @@ input[type=password] {
     border: 0.5px solid #a99898;
 }
 
-.logo,
-.car,
+h1,
+h2,
+label,
+input[type=submit],
+a,
+.navAttribute {
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+label,
+h3,
+footer,
+.carImage,
+.btn,
+.errors,
+.accessory {
+    text-align: center;
+}
+
+form,
+body,
+main,
+.carImage,
+.errors {
+    margin: auto;
+}
+
+form,
+.detailsAttribute {
+    width: 20%;
+}
+
+label,
+input[type=submit],
+footer,
+.btn,
+.navAttribute,
+.errors {
+    color: white;
+}
+
+label,
+footer,
+.btn {
+    background: #607588;
+}
+
+label,
 .carImage {
-    width: 15em;
+    display: block;
+}
+
+select,
+input[type=text],
+textarea,
+input[type=number],
+input[type=password],
+.btn {
+    padding: 0.5em;
+}
+
+input[type=submit],
+.btn {
+    width: 50%;
+}
+
+input[type=submit]:hover,
+.navAttribute:hover {
+    cursor: pointer;
+}
+
+li,
+.btn,
+.accessory,
+.car {
+    display: inline-block;
 }
