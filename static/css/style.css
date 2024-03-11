@@ -119,40 +119,6 @@ footer {
     font-size: 1.1em;
 }
 
-.carImage,
-.logo,
-.car {
-    width: 15em;
-}
-
-.details,
-.detailsAttribute,
-.accessories,
-.cars {
-    display: flex;
-}
-
-.btn,
-.navAttribute {
-    text-decoration: none;
-}
-
-.btn:hover,
-.navAttribute:hover {
-    text-decoration: underline;
-}
-
-.detailsAttribute,
-.accessories,
-.cars {
-    justify-content: center;
-}
-
-.accessory,
-.car {
-    border: 0.5px solid #a99898;
-}
-
 h1,
 h2,
 label,
@@ -231,4 +197,38 @@ li,
 .accessory,
 .car {
     display: inline-block;
+}
+
+.carImage,
+.logo,
+.car {
+    width: 15em;
+}
+
+.details,
+.detailsAttribute,
+.accessories,
+.cars {
+    display: flex;
+}
+
+.btn,
+.navAttribute {
+    text-decoration: none;
+}
+
+.btn:hover,
+.navAttribute:hover {
+    text-decoration: underline;
+}
+
+.detailsAttribute,
+.accessories,
+.cars {
+    justify-content: center;
+}
+
+.accessory,
+.car {
+    border: 0.5px solid #a99898;
 }
