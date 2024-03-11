@@ -1,8 +1,13 @@
-body {
+body,
+main,
+main form,
+img.carImage,
+.errors {
     margin: auto;
 }
 
-header {
+header,
+input[type=submit] {
     background-color: #607588;
 }
 
@@ -11,95 +16,152 @@ header ul {
     padding: 0;
 }
 
-header ul li {
+header ul li,
+main a.btn,
+div.car,
+div.accessory {
     display: inline-block;
+}
+
+header ul li {
     vertical-align: middle;
 }
 
-header ul li a {
+header ul li a,
+main a.btn {
     text-decoration: none;
+}
+
+header ul li a,
+a,
+h1,
+h2,
+input[type=submit] {
     text-transform: uppercase;
+}
+
+header ul li a,
+main a.btn,
+footer,
+.errors,
+form label,
+input[type=submit] {
     color: white;
+}
+
+header ul li a {
     font-weight: bold;
     margin: 0.5em;
 }
 
-header ul li a:hover {
+header ul li a:hover,
+input[type=submit]:hover {
     cursor: pointer;
-    text-decoration: underline;
 }
 
-main {
-    margin: auto;
-}
-
-main a.btn {
-    padding: 0.5em;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    width: 50%;
-    margin: 1em;
-    background: #607588;
-    color: white;
-    margin-left: 25%;
-    margin-right: 25%;
-}
-
+header ul li a:hover,
 main a.btn:hover {
     text-decoration: underline;
 }
 
-main form {
+main a.btn,
+input[type=text],
+input[type=number],
+input[type=password],
+select,
+textarea {
+    padding: 0.5em;
+}
+
+main a.btn,
+footer,
+div.accessory,
+img.carImage,
+.errors,
+h1,
+h2,
+h3,
+form label {
+    text-align: center;
+}
+
+main a.btn,
+input[type=submit] {
+    width: 50%;
+}
+
+main a.btn,
+footer,
+form label {
+    background: #607588;
+}
+
+main a.btn {
+    margin: 1em;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+main form,
+div.details a {
     width: 20%;
-    margin: auto;
+}
+
+footer,
+span {
+    font-size: 1.1em;
+}
+
+footer,
+input[type=text],
+input[type=number],
+input[type=password],
+select,
+textarea {
+    width: 100%;
 }
 
 footer {
-    background: #607588;
     padding: 1em 0em;
-    text-align: center;
-    color: white;
-    font-size: 1.1em;
-    width: 100%;
     position: absolute;
     bottom: 0;
 }
 
 div.cars,
-div.accessories {
+div.accessories,
+div.details,
+div.details a {
     display: flex;
+}
+
+div.cars,
+div.accessories,
+div.details a {
     justify-content: center;
+}
+
+div.car,
+div.accessory {
+    border: 0.5px solid #a99898;
+}
+
+div.car,
+img.logo,
+img.carImage {
+    width: 15em;
 }
 
 div.car {
     margin: 1em 0.2em;
-    display: inline-block;
-    border: 0.5px solid #a99898;
-    width: 15em;
 }
 
 div.accessory {
-    display: inline-block;
-    border: 0.5px solid #a99898;
-    text-align: center;
     margin: 0em 0.2em 5em;
 }
 
 div.details {
-    display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-div.details a {
-    display: flex;
-    justify-content: center;
-    width: 20%;
-}
-
-a {
-    text-transform: uppercase;
 }
 
 img {
@@ -108,17 +170,17 @@ img {
 }
 
 img.logo {
-    width: 15em;
     height: 4em;
     float: left;
 }
 
-img.carImage {
+img.carImage,
+form label {
     display: block;
-    margin: auto;
-    text-align: center;
+}
+
+img.carImage {
     height: 11em;
-    width: 15em;
 }
 
 .container {
@@ -127,39 +189,21 @@ img.carImage {
 }
 
 .errors {
-    margin: auto;
-    text-align: center;
     width: 35%;
     padding: 0.5%;
     margin-top: 1%;
     margin-bottom: 1%;
     background: rgb(231, 118, 118);
-    color: white;
     border-radius: 0.5em;
-}
-
-h1,
-h2 {
-    text-transform: uppercase;
-}
-
-h1,
-h2,
-h3 {
-    text-align: center;
 }
 
 span {
     font-weight: bolder;
-    font-size: 1.1em;
 }
 
-form label {
-    background: #607588;
-    color: white;
+form label,
+input[type=submit] {
     padding: 0.7em;
-    display: block;
-    text-align: center;
 }
 
 form.attachAccessory {
@@ -168,20 +212,15 @@ form.attachAccessory {
 }
 
 input[type=submit] {
-    background-color: #607588;
     border: none;
-    padding: 0.7em;
     font-size: 18px;
-    width: 50%;
     margin: 5px 5px 5px 25%;
-    color: white;
-    text-transform: uppercase;
     border-radius: 4px;
 }
 
+
 input[type=submit]:hover {
     background-color: #718F94;
-    cursor: pointer;
 }
 
 input[type=text],
@@ -189,9 +228,7 @@ input[type=number],
 input[type=password],
 select,
 textarea {
-    width: 100%;
     border: 1px solid #a99898;
     box-sizing: border-box;
-    padding: 0.5em;
     margin: 0.5em auto 2em;
 }
