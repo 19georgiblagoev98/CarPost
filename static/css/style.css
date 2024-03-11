@@ -1,14 +1,21 @@
-body,
-main,
-form,
-.carImage,
-.errors {
-    margin: auto;
+img {
+    max-height: 11em;
+    max-width: 20em;
 }
 
-header,
 input[type=submit] {
-    background-color: #607588;
+    border: none;
+    font-size: 18px;
+    margin: 5px 5px 5px 25%;
+    border-radius: 4px;
+}
+
+input[type=submit]:hover {
+    background-color: #718F94;
+}
+
+span {
+    font-weight: bolder;
 }
 
 ul {
@@ -16,109 +23,8 @@ ul {
     padding: 0;
 }
 
-li,
-.btn,
-.car,
-.accessory {
-    display: inline-block;
-}
-
 li {
     vertical-align: middle;
-}
-
-.navAttribute,
-.btn {
-    text-decoration: none;
-}
-
-.navAttribute,
-a,
-h1,
-h2,
-input[type=submit] {
-    text-transform: uppercase;
-}
-
-.navAttribute,
-.btn,
-footer,
-.errors,
-label,
-input[type=submit] {
-    color: white;
-}
-
-.navAttribute {
-    font-weight: bold;
-    margin: 0.5em;
-}
-
-.navAttribute:hover,
-input[type=submit]:hover {
-    cursor: pointer;
-}
-
-.navAttribute:hover,
-.btn:hover {
-    text-decoration: underline;
-}
-
-.btn,
-input[type=text],
-input[type=number],
-input[type=password],
-select,
-textarea {
-    padding: 0.5em;
-}
-
-.btn,
-footer,
-.accessory,
-.carImage,
-.errors,
-h1,
-h2,
-h3,
-label {
-    text-align: center;
-}
-
-.btn,
-input[type=submit] {
-    width: 50%;
-}
-
-.btn,
-footer,
-label {
-    background: #607588;
-}
-
-.btn {
-    margin: 1em;
-    margin-left: 25%;
-    margin-right: 25%;
-}
-
-form,
-.detailsAttribute {
-    width: 20%;
-}
-
-footer,
-span {
-    font-size: 1.1em;
-}
-
-footer,
-input[type=text],
-input[type=number],
-input[type=password],
-select,
-textarea {
-    width: 100%;
 }
 
 footer {
@@ -127,36 +33,13 @@ footer {
     bottom: 0;
 }
 
-.cars,
-.accessories,
-.details,
-.detailsAttribute {
-    display: flex;
-}
-
-.cars,
-.accessories,
-.detailsAttribute {
-    justify-content: center;
-}
-
-.car,
-.accessory {
-    border: 0.5px solid #a99898;
-}
-
-.car,
-.logo,
 .carImage {
-    width: 15em;
+    height: 11em;
 }
 
-.car {
-    margin: 1em 0.2em;
-}
-
-.accessory {
-    margin: 0em 0.2em 5em;
+.attachAccessory {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .details {
@@ -164,28 +47,25 @@ footer {
     align-items: center;
 }
 
-img {
-    max-height: 11em;
-    max-width: 20em;
-}
-
-.logo {
-    height: 4em;
-    float: left;
-}
-
-.carImage,
-label {
-    display: block;
-}
-
-.carImage {
-    height: 11em;
+.btn {
+    margin: 1em;
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 .container {
     position: relative;
     min-height: 100vh;
+}
+
+.navAttribute {
+    font-weight: bold;
+    margin: 0.5em;
+}
+
+.logo {
+    height: 4em;
+    float: left;
 }
 
 .errors {
@@ -197,8 +77,110 @@ label {
     border-radius: 0.5em;
 }
 
-span {
-    font-weight: bolder;
+.accessory {
+    margin: 0em 0.2em 5em;
+}
+
+.car {
+    margin: 1em 0.2em;
+}
+
+form,
+body,
+main,
+.carImage,
+.errors {
+    margin: auto;
+}
+
+input[type=submit],
+header {
+    background-color: #607588;
+}
+
+li,
+.btn,
+.accessory,
+.car {
+    display: inline-block;
+}
+
+h1,
+h2,
+input[type=submit],
+a,
+.navAttribute {
+    text-transform: uppercase;
+}
+
+label,
+input[type=submit],
+footer,
+.navAttribute,
+.errors,
+.btn {
+    color: white;
+}
+
+input[type=submit]:hover,
+.navAttribute:hover {
+    cursor: pointer;
+}
+
+select,
+input[type=text],
+textarea,
+input[type=number],
+input[type=password],
+.btn {
+    padding: 0.5em;
+}
+
+h1,
+h2,
+label,
+h3,
+footer,
+.carImage,
+.btn,
+.errors,
+.accessory {
+    text-align: center;
+}
+
+input[type=submit],
+.btn {
+    width: 50%;
+}
+
+label,
+footer,
+.btn {
+    background: #607588;
+}
+
+form,
+.detailsAttribute {
+    width: 20%;
+}
+
+span,
+footer {
+    font-size: 1.1em;
+}
+
+select,
+input[type=text],
+textarea,
+input[type=number],
+input[type=password],
+footer {
+    width: 100%;
+}
+
+label,
+.carImage {
+    display: block;
 }
 
 label,
@@ -206,29 +188,46 @@ input[type=submit] {
     padding: 0.7em;
 }
 
-.attachAccessory {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-input[type=submit] {
-    border: none;
-    font-size: 18px;
-    margin: 5px 5px 5px 25%;
-    border-radius: 4px;
-}
-
-
-input[type=submit]:hover {
-    background-color: #718F94;
-}
-
-input[type=text],
-input[type=number],
-input[type=password],
 select,
-textarea {
+input[type=text],
+textarea,
+input[type=number],
+input[type=password] {
     border: 1px solid #a99898;
     box-sizing: border-box;
     margin: 0.5em auto 2em;
+}
+
+.navAttribute,
+.btn {
+    text-decoration: none;
+}
+
+.btn:hover,
+.navAttribute:hover {
+    text-decoration: underline;
+}
+
+.details,
+.detailsAttribute,
+.accessories,
+.cars {
+    display: flex;
+}
+
+.detailsAttribute,
+.accessories,
+.cars {
+    justify-content: center;
+}
+
+.accessory,
+.car {
+    border: 0.5px solid #a99898;
+}
+
+.logo,
+.car,
+.carImage {
+    width: 15em;
 }
