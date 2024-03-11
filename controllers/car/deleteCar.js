@@ -12,7 +12,7 @@ module.exports = {
                 req.authStorage.logout();
                 return res.redirect('/login');
             }
-            res.render('deleteCar', {
+            res.render('car/deleteCar', {
                 title: 'Delete Car',
                 car
             });

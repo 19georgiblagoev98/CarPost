@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 router.get('/login', (req, res) => {
-    res.render('login', { title: 'Login' });
+    res.render('auth/login', { title: 'Login' });
 });
 router.post('/login', async (req, res) => {
     try {
@@ -13,7 +13,7 @@ router.post('/login', async (req, res) => {
         }
     } catch (err) {
         res.locals.errors = [{ msg: err.message }];
-        res.render('login', { title: 'Login' });
+        res.render('auth/login', { title: 'Login' });
     }
 });
 module.exports = router;

@@ -4,7 +4,7 @@ module.exports = {
         try {
             const query = req.query;
             const cars = await req.carStorage.listCars(query);
-            res.render('home', {
+            res.render('main/home', {
                 title: 'Home',
                 cars,
                 query

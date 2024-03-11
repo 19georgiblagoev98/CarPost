@@ -10,7 +10,7 @@ module.exports = {
             if (req.session.user && car.owner == req.session.user.id) {
                 car.isOwner = true;
             }
-            res.render('detailsCar', {
+            res.render('car/detailsCar', {
                 title: 'Details Car',
                 car
             });

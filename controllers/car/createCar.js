@@ -1,7 +1,7 @@
 const mapError = require('../../utils/error');
 module.exports = {
     get(req, res) {
-        res.render('createCar', { title: 'Create Car' });
+        res.render('car/createCar', { title: 'Create Car' });
     },
     async post(req, res) {
         try {
@@ -18,7 +18,7 @@ module.exports = {
             }
         } catch (err) {
             res.locals.errors = mapError(err);
-            res.render('createCar', { title: 'Create Car' });
+            res.render('car/createCar', { title: 'Create Car' });
         }
     }
 };

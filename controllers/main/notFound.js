@@ -1,5 +1,5 @@
 module.exports = {
     get(req, res) {
-        res.render('notFound');
+        res.render('main/notFound');
     }
 };

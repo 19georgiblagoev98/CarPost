@@ -3,7 +3,7 @@ const { body, validationResult } = require('express-validator');
 const mapError = require('../../utils/error');
 const router = Router();
 router.get('/register', (req, res) => {
-    res.render('register', { title: 'Register' });
+    res.render('auth/register', { title: 'Register' });
 });
 router.post('/register',
     body('username')
@@ -32,7 +32,7 @@ router.post('/register',
             }
         } catch (err) {
             res.locals.errors = mapError(err);
-            res.render('register', {
+            res.render('auth/register', {
                 title: 'Register',
                 data: { username }
             });

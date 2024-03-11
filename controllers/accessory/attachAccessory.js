@@ -18,7 +18,7 @@ module.exports = {
             if (accessories != undefined) {
                 const accessoryIds = car.accessories.map(a => a.id.toString());
                 const availableAccessories = accessories.filter(a => accessoryIds.includes(a.id.toString()) == false);
-                res.render('attachAccessory', {
+                res.render('accessory/attachAccessory', {
                     title: 'Attach Accessory',
                     car,
                     accessories: availableAccessories
