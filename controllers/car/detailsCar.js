@@ -4,8 +4,9 @@ module.exports = {
         try {
             const carId = req.params.id;
             const car = await req.carStorage.getCar(carId);
-            if (car == undefined) {
-                return res.redirect('/notFound');
+            if (car == null) {
+                res.redirect('/notFound');
+                throw new Error('Car not found');
             }
             if (req.session.user && car.owner == req.session.user.id) {
                 car.isOwner = true;
@@ -16,7 +17,7 @@ module.exports = {
             });
         } catch (err) {
             res.locals.errors = mapError(err);
-            return res.redirect('/notFound');
+            res.redirect('/notFound');
         }
     }
 };

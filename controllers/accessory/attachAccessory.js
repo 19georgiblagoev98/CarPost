@@ -7,15 +7,17 @@ module.exports = {
                 req.carStorage.getCar(carId),
                 req.accessoryStorage.listAccessories()
             ]);
-            if (car == undefined) {
-                return res.redirect('/notFound');
+            if (car == null) {
+                res.redirect('/notFound');
+                throw new Error('Car not found');
             }
             const requesterId = req.session.user.id;
             if (car.owner != requesterId) {
                 req.authStorage.logout();
-                return res.redirect('/login');
+                res.redirect('/login');
+                throw new Error('The user of the request is not the owner of the car');
             }
-            if (accessories != undefined) {
+            if (accessories != []) {
                 const accessoryIds = car.accessories.map(a => a.id.toString());
                 const availableAccessories = accessories.filter(a => accessoryIds.includes(a.id.toString()) == false);
                 res.render('accessory/attachAccessory', {
@@ -26,29 +28,35 @@ module.exports = {
             }
         } catch (err) {
             res.locals.errors = mapError(err);
-            return res.redirect('/notFound');
+            res.redirect('/notFound');
         }
     },
     async post(req, res) {
         const carId = req.params.id;
         try {
-            const car = await req.carStorage.getCar(carId);
-            if (car == undefined) {
-                return res.redirect('/notFound');
+            const accessoryId = req.body.accessory;
+            const [car, attachedCar] = await Promise.all([
+                req.carStorage.getCar(carId),
+                req.accessoryStorage.attachAccessory(carId, accessoryId)
+            ]);
+            if (car == null) {
+                res.redirect('/notFound');
+                throw new Error('Car not found');
             }
             const requesterId = req.session.user.id;
             if (car.owner != requesterId) {
                 req.authStorage.logout();
-                return res.redirect('/login');
+                res.redirect('/login');
+                throw new Error('The user of the request is not the owner of the car');
             }
-            const accessoryId = req.body.accessory;
-            const attachedCar = await req.accessoryStorage.attachAccessory(carId, accessoryId);
-            if (attachedCar != undefined) {
-                return res.redirect('/details/car/' + carId);
+            if (attachedCar == null) {
+                res.redirect('/notFound');
+                throw new Error('Car not found');
             }
+            res.redirect('/details/car/' + carId);
         } catch (err) {
             res.locals.errors = mapError(err);
-            return res.redirect('/attach/accessory/' + carId);
+            res.redirect('/attach/accessory/' + carId);
         }
     }
 };

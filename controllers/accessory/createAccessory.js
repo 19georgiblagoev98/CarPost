@@ -12,10 +12,8 @@ module.exports = {
                 price: Number(req.body.price),
                 owner: req.session.user.id
             };
-            const accessory = await req.accessoryStorage.createAccessory(newAccessory);
-            if (accessory != undefined) {
-                return res.redirect('/');
-            }
+            await req.accessoryStorage.createAccessory(newAccessory);
+            res.redirect('/');
         } catch (err) {
             res.locals.errors = mapError(err);
             res.render('accessory/createAccessory', { title: 'Create Accessory' });

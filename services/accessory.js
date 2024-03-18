@@ -3,27 +3,20 @@ const Car = require('../models/schemas/Car');
 const { accessoryModel } = require('../utils/model');
 async function listAccessories() {
     const accessories = await Accessory.find({});
-    if (accessories) {
-        return accessories.map(accessoryModel);
-    }
-    return undefined;
+    return accessories.length > 0 ? accessories.map(accessoryModel) : [];
 }
 async function createAccessory(newAccessory) {
     const accessory = new Accessory(newAccessory);
-    if (accessory) {
-        await accessory.save();
-        return accessory;
-    }
-    return undefined;
+    return await accessory.save();
 }
 async function attachAccessory(carId, accessoryId) {
     const attachedCar = await Car.findById(carId);
-    if (attachedCar) {
-        attachedCar.accessories.push(accessoryId);
-        await attachedCar.save();
-        return attachedCar;
+    if (attachedCar == null) {
+        return null;
     }
-    return undefined;
+    attachedCar.accessories.push(accessoryId);
+    await attachedCar.save();
+    return attachedCar;
 }
 module.exports = () => (req, res, next) => {
     req.accessoryStorage = {

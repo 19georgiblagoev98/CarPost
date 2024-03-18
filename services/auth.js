@@ -1,29 +1,33 @@
 const User = require('../models/schemas/User');
 async function register(session, username, password) {
-    const user = new User({
-        username,
-        hashedPassword: password
-    });
-    if (user) {
-        await user.save();
+    const isUserExists = await User.findOne({ username });
+    if (!isUserExists) {
+        const user = new User({
+            username,
+            hashedPassword: password
+        });
         session.user = {
             id: user._id,
             username: user.username
         };
-        return user;
+        return await user.save();
+    } else {
+        return null;
     }
-    return undefined;
 }
 async function login(session, username, password) {
     const user = await User.findOne({ username });
-    if (user && await user.comparePassword(password)) {
-        session.user = {
-            id: user._id,
-            username: user.username
-        };
-        return user;
+    if (user) {
+        const comparedPassword = await user.comparePassword(password);
+        if (comparedPassword) {
+            session.user = {
+                id: user._id,
+                username: user.username
+            };
+            return user;
+        }
     } else {
-        throw new Error('Incorrect username or password');
+        return null;
     }
 }
 function logout(session) {

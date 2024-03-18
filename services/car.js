@@ -5,10 +5,7 @@ async function getCar(carId) {
         .findById(carId)
         .where({ isDeleted: false })
         .populate('accessories');
-    if (car) {
-        return carModel(car);
-    }
-    return undefined;
+    return car ? carModel(car) : null;
 }
 async function listCars(query) {
     const filterCriteria = { isDeleted: false };
@@ -25,45 +22,33 @@ async function listCars(query) {
         filterCriteria.price.$lte = Number(query.priceTo);
     }
     const cars = await Car.find(filterCriteria);
-    if (cars) {
-        return cars.map(carModel);
-    }
-    return undefined;
+    return cars.length > 0 ? cars.map(carModel) : [];
 }
 async function createCar(newCar) {
     const car = new Car(newCar);
-    if (car) {
-        await car.save();
-        return car;
-    }
-    return undefined;
+    return await car.save();
 }
 async function editCar(carId, editedCar) {
     const car = await Car
         .findById(carId)
         .where({ isDeleted: false })
         .populate('accessories');
-    if (car) {
-        car.name = editedCar.name;
-        car.description = editedCar.description;
-        car.image = editedCar.image;
-        car.price = editedCar.price;
-        editedCar.accessories.map(a => car.accessories.push(a));
-        await car.save();
-        return car;
-    }
-    return undefined;
+    car.name = editedCar.name;
+    car.description = editedCar.description;
+    car.image = editedCar.image;
+    car.price = editedCar.price;
+    editedCar.accessories.map(a => car.accessories.push(a));
+    return await car.save();
 }
 async function deleteCar(carId) {
     const car = await Car
         .findById(carId)
         .where({ isDeleted: false });
-    if (car) {
-        await Car.findByIdAndUpdate(carId, { isDeleted: true });
-        await car.save();
-        return car;
+    if (car == null) {
+        return null;
     }
-    return undefined;
+    await Car.findByIdAndUpdate(carId, { isDeleted: true });
+    return await car.save();
 }
 module.exports = () => (req, res, next) => {
     req.carStorage = {

@@ -4,14 +4,16 @@ module.exports = {
         try {
             const query = req.query;
             const cars = await req.carStorage.listCars(query);
-            res.render('main/home', {
-                title: 'Home',
-                cars,
-                query
-            });
+            if (cars != []) {
+                res.render('main/home', {
+                    title: 'Home',
+                    cars,
+                    query
+                });
+            }
         } catch (err) {
             res.locals.errors = mapError(err);
-            return res.redirect('/notFound');
+            res.redirect('/notFound');
         }
     }
 };

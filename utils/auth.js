@@ -1,11 +1,9 @@
 const bcrypt = require('bcrypt');
 async function hashPassword(password) {
-    const hashedPassword = bcrypt.hash(password, 10);
-    return hashedPassword;
+    return await bcrypt.hash(password, 10);
 }
 async function comparePassword(password, hashedPassword) {
-    const comparedPassword = bcrypt.compare(password, hashedPassword);
-    return comparedPassword;
+    return await bcrypt.compare(password, hashedPassword);
 }
 function isLoggedIn() {
     return function (req, res, next) {

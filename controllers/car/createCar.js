@@ -12,10 +12,8 @@ module.exports = {
                 price: Number(req.body.price),
                 owner: req.session.user.id
             };
-            const car = await req.carStorage.createCar(newCar);
-            if (car != undefined) {
-                return res.redirect('/');
-            }
+            await req.carStorage.createCar(newCar);
+            res.redirect('/');
         } catch (err) {
             res.locals.errors = mapError(err);
             res.render('car/createCar', { title: 'Create Car' });

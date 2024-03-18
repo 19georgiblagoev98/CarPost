@@ -4,13 +4,15 @@ module.exports = {
         try {
             const carId = req.params.id;
             const car = await req.carStorage.getCar(carId);
-            if (car == undefined) {
-                return res.redirect('/notFound');
+            if (car == null) {
+                res.redirect('/notFound');
+                throw new Error('Car not found');
             }
             const requesterId = req.session.user.id;
             if (car.owner != requesterId) {
                 req.authStorage.logout();
-                return res.redirect('/login');
+                res.redirect('/login');
+                throw new Error('The user of the request is not the owner of the car');
             }
             res.render('car/editCar', {
                 title: 'Edit Car',
@@ -18,20 +20,22 @@ module.exports = {
             });
         } catch (err) {
             res.locals.errors = mapError(err);
-            return res.redirect('/notFound');
+            res.redirect('/notFound');
         }
     },
     async post(req, res) {
         try {
             const carId = req.params.id;
             const car = await req.carStorage.getCar(carId);
-            if (car == undefined) {
-                return res.redirect('/notFound');
+            if (car == null) {
+                res.redirect('/notFound');
+                throw new Error('Car not found');
             }
             const requesterId = req.session.user.id;
             if (car.owner != requesterId) {
                 req.authStorage.logout();
-                return res.redirect('/login');
+                res.redirect('/login');
+                throw new Error('The user of the request is not the owner of the car');
             }
             const carAccessories = car.accessories;
             const editedCar = {
@@ -41,13 +45,11 @@ module.exports = {
                 price: Number(req.body.price),
                 accessories: carAccessories
             };
-            const carEdit = await req.carStorage.editCar(carId, editedCar);
-            if (carEdit != undefined) {
-                return res.redirect('/');
-            }
+            await req.carStorage.editCar(carId, editedCar);
+            res.redirect('/details/car/' + carId);
         } catch (err) {
             res.locals.errors = mapError(err);
-            return res.redirect('/notFound');
+            res.redirect('/notFound');
         }
     }
 };
