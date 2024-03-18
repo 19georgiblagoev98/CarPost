@@ -14,10 +14,10 @@ const carSchema = new Schema({
     },
     price: {
         type: Number,
-        required: true
+        min: 0
     },
     owner: {
-        type: [ObjectId],
+        type: ObjectId,
         ref: 'User'
     },
     accessories: {

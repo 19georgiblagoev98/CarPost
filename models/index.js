@@ -5,10 +5,7 @@ require('./schemas/User');
 const connectionString = 'mongodb://localhost:27017/carpost';
 async function initDatabase() {
     try {
-        await mongoose.connect(connectionString, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        await mongoose.connect(connectionString);
         mongoose.connection.on('error', (err) => {
             throw new Error(err);
         });

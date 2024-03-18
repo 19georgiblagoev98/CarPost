@@ -1,6 +1,7 @@
 const express = require('express');
 const hbs = require('express-handlebars');
 const session = require('express-session');
+const { body } = require('express-validator');
 const attachAccessoryController = require('./controllers/accessory/attachAccessory');
 const createAccessoryController = require('./controllers/accessory/createAccessory');
 const loginController = require('./controllers/auth/login');
@@ -36,10 +37,32 @@ async function start() {
     app.use(authService());
     app.use(carService());
     app.use(accessoryService());
-    app.use(registerController);
-    app.use(loginController);
-    app.use(logoutController);
     app.get('/', homeController.get);
+    app.route('/register')
+        .get(registerController.get)
+        .post(
+            body('username')
+                .trim()
+                .isLength({ min: 5 })
+                .withMessage('Username must be at least 5 characters long')
+                .isAlphanumeric()
+                .withMessage('Username must use alphanumeric characters only'),
+            body('password')
+                .trim()
+                .isLength({ min: 8 })
+                .withMessage('Password must be at least 8 characters long')
+                .isAlphanumeric()
+                .withMessage('Password must use alphanumeric characters only'),
+            body('repeatPassword')
+                .trim()
+                .custom((value, { req }) => value == req.body.password)
+                .withMessage('Passwords don\'t match'),
+            registerController.post
+        );
+    app.route('/login')
+        .get(loginController.get)
+        .post(loginController.post);
+    app.get('/logout', logoutController.get);
     app.get('/details/car/:id', detailsCarController.get);
     app.route('/create/car')
         .get(isLoggedIn(), createCarController.get)
