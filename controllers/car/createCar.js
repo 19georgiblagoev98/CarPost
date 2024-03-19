@@ -12,7 +12,7 @@ module.exports = {
                 price: Number(req.body.price),
                 owner: req.session.user.id
             };
-            await req.carStorage.createCar(newCar);
+            await req.carStorage.createCar(newCar, req.session.user.id);
             res.redirect('/');
         } catch (err) {
             res.locals.errors = mapError(err);

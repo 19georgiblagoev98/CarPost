@@ -9,7 +9,7 @@ const detailsCarController = require('../controllers/car/detailsCar');
 const editCarController = require('../controllers/car/editCar');
 const homeController = require('../controllers/main/home');
 const notFoundController = require('../controllers/main/notFound');
-const { isLoggedIn } = require('../utils/auth');
+const isLoggedIn = require('../utils/guard');
 module.exports = (app) => {
     app.route('/attach/accessory/:id')
         .get(isLoggedIn(), attachAccessoryController.get)

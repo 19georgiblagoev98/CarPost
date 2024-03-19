@@ -3,9 +3,7 @@ const { hashPassword, comparePassword } = require('../utils/auth');
 const userSchema = new Schema({
     username: {
         type: String,
-        required: true,
-        trim: true,
-        minlength: [5, 'Username must be at least 5 characters long']
+        required: true
     },
     hashedPassword: {
         type: String,

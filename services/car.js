@@ -1,4 +1,5 @@
 const Car = require('../models/Car');
+const User = require('../models/User');
 const { carModel } = require('../utils/model');
 async function getCar(carId) {
     const car = await Car
@@ -24,9 +25,14 @@ async function listCars(query) {
     const cars = await Car.find(filterCriteria);
     return cars.length > 0 ? cars.map(carModel) : [];
 }
-async function createCar(newCar) {
+async function createCar(newCar, userId) {
     const car = new Car(newCar);
-    return await car.save();
+    const user = await User.findById(userId);
+    user.posts.push(car._id);
+    return await Promise.all([
+        user.save(),
+        car.save()
+    ]);
 }
 async function editCar(carId, editedCar) {
     const car = await Car

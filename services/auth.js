@@ -4,7 +4,8 @@ async function register(session, username, password) {
     if (!isUserExists) {
         const user = new User({
             username,
-            hashedPassword: password
+            hashedPassword: password,
+            posts: [],
         });
         session.user = {
             id: user._id,

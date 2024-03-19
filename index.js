@@ -1,9 +1,9 @@
 const express = require('express');
-const controllerConfig = require('./config/controller');
-const databaseConfig = require('./config/database');
-const expressConfig = require('./config/express');
-const portConfig = require('./config/port');
-const serviceConfig = require('./config/service');
+const controllerConfig = require('./configs/controller');
+const databaseConfig = require('./configs/database');
+const expressConfig = require('./configs/express');
+const portConfig = require('./configs/port');
+const serviceConfig = require('./configs/service');
 start();
 async function start() {
     const app = express();

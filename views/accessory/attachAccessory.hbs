@@ -5,7 +5,7 @@
     <h2>
         {{car.name}}
     </h2>
-    <img class="carImage" src="/static/images/{{car.image}}">
+    <img class="carImage" src="/statics/images/{{car.image}}">
     {{#if accessories}}
     <form class="attachAccessory" action="/attach/accessory/{{car.id}}" method="post">
         <label for="accessory">
