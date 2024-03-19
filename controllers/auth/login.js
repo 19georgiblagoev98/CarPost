@@ -5,8 +5,8 @@ module.exports = {
     },
     async post(req, res) {
         try {
-            const username = req.body.username;
-            const password = req.body.password;
+            const username = req.body.username.trim();
+            const password = req.body.password.trim();
             const user = await req.authStorage.login(username, password);
             if (user == null) {
                 throw new Error('Incorrect username or password');

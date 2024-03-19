@@ -45,7 +45,11 @@ module.exports = {
                 price: Number(req.body.price),
                 accessories: carAccessories
             };
-            await req.carStorage.editCar(carId, editedCar);
+            const updatedCar = await req.carStorage.editCar(carId, editedCar);
+            if (updatedCar == null) {
+                res.redirect('/notFound');
+                throw new Error('Car not found');
+            }
             res.redirect('/details/car/' + carId);
         } catch (err) {
             res.locals.errors = mapError(err);

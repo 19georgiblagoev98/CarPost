@@ -20,7 +20,7 @@ module.exports = (app) => {
     app.route('/login')
         .get(loginController.get)
         .post(loginController.post);
-    app.get('/logout', logoutController.get);
+    app.get('/logout', isLoggedIn(), logoutController.get);
     app.route('/register')
         .get(registerController.get)
         .post(registerController.post);

@@ -25,13 +25,16 @@ async function listCars(query) {
     const cars = await Car.find(filterCriteria);
     return cars.length > 0 ? cars.map(carModel) : [];
 }
-async function createCar(newCar, userId) {
+async function createCar(newCar, requesterId) {
     const car = new Car(newCar);
-    const user = await User.findById(userId);
+    const user = await User.findById(requesterId);
+    if (user == null) {
+        return null;
+    }
     user.posts.push(car._id);
     return await Promise.all([
-        user.save(),
-        car.save()
+        car.save(),
+        user.save()
     ]);
 }
 async function editCar(carId, editedCar) {
@@ -39,30 +42,35 @@ async function editCar(carId, editedCar) {
         .findById(carId)
         .where({ isDeleted: false })
         .populate('accessories');
+    if (car == null) {
+        return null;
+    }
     car.name = editedCar.name;
     car.description = editedCar.description;
     car.image = editedCar.image;
     car.price = editedCar.price;
     return await car.save();
 }
-async function deleteCar(carId, userId) {
-    const car = await Car
-        .findById(carId)
-        .where({ isDeleted: false });
-    if (car == null) {
+async function deleteCar(carId, requesterId) {
+    const [car, user] = await Promise.all([
+        await Car.findByIdAndUpdate(carId, { isDeleted: true }),
+        await User.findById(requesterId)
+    ]);
+    if (car == null || user == null) {
         return null;
     }
-    await Car.findByIdAndUpdate(carId, { isDeleted: true });
-    const user = await User.findById(userId);
-    const carIds = user.posts.map(p => p.toString());
-    carIds.forEach((p, i) => {
-        if (p.includes(carId)) {
-            user.posts.splice(i, 1);
-            return;
-        }
-    });
-    await user.save();
-    return await car.save();
+    user.posts
+        .map(p => p.toString())
+        .forEach((ci, i) => {
+            if (ci.includes(carId)) {
+                user.posts.splice(i, 1);
+                return;
+            }
+        });
+    return await Promise.all([
+        await car.save(),
+        await user.save()
+    ]);
 }
 module.exports = () => (req, res, next) => {
     req.carStorage = {

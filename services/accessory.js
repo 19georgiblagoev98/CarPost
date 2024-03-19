@@ -10,13 +10,15 @@ async function createAccessory(newAccessory) {
     return await accessory.save();
 }
 async function attachAccessory(carId, accessoryId) {
-    const attachedCar = await Car.findById(carId);
+    const attachedCar = await Car
+        .findById(carId)
+        .where({ isDeleted: false })
+        .populate('accessories');
     if (attachedCar == null) {
         return null;
     }
     attachedCar.accessories.push(accessoryId);
-    await attachedCar.save();
-    return attachedCar;
+    return await attachedCar.save();
 }
 module.exports = () => (req, res, next) => {
     req.accessoryStorage = {

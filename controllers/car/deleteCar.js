@@ -26,9 +26,11 @@ module.exports = {
     async post(req, res) {
         try {
             const carId = req.params.id;
-            const car = await req.carStorage.deleteCar(carId, req.session.user.id);
-            if (car == null) {
-                throw new Error('Car not found');
+            const requesterId = req.session.user.id;
+            const deletedCar = await req.carStorage.deleteCar(carId, requesterId);
+            if (deletedCar == null) {
+                res.redirect('/notFound');
+                throw new Error('Car or User not found');
             }
             res.redirect('/');
         } catch (err) {

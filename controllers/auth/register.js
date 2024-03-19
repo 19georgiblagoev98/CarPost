@@ -1,4 +1,3 @@
-const { validationResult } = require('express-validator');
 const mapError = require('../../utils/error');
 module.exports = {
     get(req, res) {
@@ -11,10 +10,10 @@ module.exports = {
                 throw new Error('Username must be at least 5 characters long');
             }
             const password = req.body.password.trim();
-            const repeatPassword = req.body.repeatPassword.trim();
             if (password.length < 8) {
                 throw new Error('Password must be at least 8 characters long');
             }
+            const repeatPassword = req.body.repeatPassword.trim();
             if (password != repeatPassword) {
                 throw new Error('Passwords don\'t match');
             }

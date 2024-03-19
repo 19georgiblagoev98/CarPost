@@ -1,11 +1,10 @@
 const User = require('../models/User');
 async function register(session, username, password) {
-    const isUserExists = await User.findOne({ username });
-    if (!isUserExists) {
+    const isUserExist = await User.findOne({ username });
+    if (!isUserExist) {
         const user = new User({
             username,
-            hashedPassword: password,
-            posts: [],
+            hashedPassword: password
         });
         session.user = {
             id: user._id,

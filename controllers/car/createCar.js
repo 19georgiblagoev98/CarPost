@@ -12,7 +12,12 @@ module.exports = {
                 price: Number(req.body.price),
                 owner: req.session.user.id
             };
-            await req.carStorage.createCar(newCar, req.session.user.id);
+            const requesterId = req.session.user.id;
+            const createdCar = await req.carStorage.createCar(newCar, requesterId);
+            if (createdCar == null) {
+                res.redirect('/notFound');
+                throw new Error('User not found');
+            }
             res.redirect('/');
         } catch (err) {
             res.locals.errors = mapError(err);

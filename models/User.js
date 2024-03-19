@@ -34,8 +34,8 @@ userSchema.pre('save', async function (next) {
 });
 userSchema.methods.comparePassword = async function (password) {
     const hashedPassword = this.hashedPassword;
-    const comparedPassword = await comparePassword(password, hashedPassword);
-    return comparedPassword;
+    const comparedPasswords = await comparePassword(password, hashedPassword);
+    return comparedPasswords;
 }
 const User = model('User', userSchema);
 module.exports = User;
