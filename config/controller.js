@@ -1,4 +1,3 @@
-const { body } = require('express-validator');
 const attachAccessoryController = require('../controllers/accessory/attachAccessory');
 const createAccessoryController = require('../controllers/accessory/createAccessory');
 const loginController = require('../controllers/auth/login');
@@ -24,20 +23,7 @@ module.exports = (app) => {
     app.get('/logout', logoutController.get);
     app.route('/register')
         .get(registerController.get)
-        .post(
-            body('username')
-                .trim()
-                .isLength({ min: 5 }).withMessage('Username must be at least 5 characters long')
-                .isAlphanumeric().withMessage('Username must use alphanumeric characters only'),
-            body('password')
-                .trim()
-                .isLength({ min: 8 }).withMessage('Password must be at least 8 characters long')
-                .isAlphanumeric().withMessage('Password must use alphanumeric characters only'),
-            body('repeatPassword')
-                .trim()
-                .custom((value, { req }) => value == req.body.password).withMessage('Passwords don\'t match'),
-            registerController.post
-        );
+        .post(registerController.post);
     app.route('/create/car')
         .get(isLoggedIn(), createCarController.get)
         .post(isLoggedIn(), createCarController.post);

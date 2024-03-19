@@ -11,7 +11,14 @@ module.exports = {
             if (errors.length > 0) {
                 throw errors;
             }
-            const password = req.body.password;
+            const password = req.body.password.trim();
+            const repeatPassword = req.body.repeatPassword.trim();
+            if (password.length < 8) {
+                throw new Error('Password must be at least 8 characters long');
+            }
+            if (password != repeatPassword) {
+                throw new Error('Passwords don\'t match');
+            }
             const user = await req.authStorage.register(username, password);
             if (user == null) {
                 throw new Error('Username already exists');

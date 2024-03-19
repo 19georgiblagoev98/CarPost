@@ -1,13 +1,20 @@
-const { Schema, model } = require('mongoose');
+const { Schema, Types: { ObjectId }, model } = require('mongoose');
 const { hashPassword, comparePassword } = require('../utils/auth');
 const userSchema = new Schema({
     username: {
         type: String,
-        required: true
+        required: true,
+        trim: true,
+        minlength: [5, 'Username must be at least 5 characters long']
     },
     hashedPassword: {
         type: String,
         required: true
+    },
+    posts: {
+        type: [ObjectId],
+        ref: 'Car',
+        default: []
     }
 });
 userSchema.index(
