@@ -26,7 +26,7 @@ module.exports = {
     async post(req, res) {
         try {
             const carId = req.params.id;
-            const car = await req.carStorage.deleteCar(carId);
+            const car = await req.carStorage.deleteCar(carId, req.session.user.id);
             if (car == null) {
                 throw new Error('Car not found');
             }

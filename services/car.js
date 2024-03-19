@@ -45,7 +45,7 @@ async function editCar(carId, editedCar) {
     car.price = editedCar.price;
     return await car.save();
 }
-async function deleteCar(carId) {
+async function deleteCar(carId, userId) {
     const car = await Car
         .findById(carId)
         .where({ isDeleted: false });
@@ -53,6 +53,15 @@ async function deleteCar(carId) {
         return null;
     }
     await Car.findByIdAndUpdate(carId, { isDeleted: true });
+    const user = await User.findById(userId);
+    const carIds = user.posts.map(p => p.toString());
+    carIds.forEach((p, i) => {
+        if (p.includes(carId)) {
+            user.posts.splice(i, 1);
+            return;
+        }
+    });
+    await user.save();
     return await car.save();
 }
 module.exports = () => (req, res, next) => {
