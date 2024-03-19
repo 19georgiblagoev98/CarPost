@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const { hashPassword, comparePassword } = require('../../utils/auth');
+const { hashPassword, comparePassword } = require('../utils/auth');
 const userSchema = new Schema({
     username: {
         type: String,

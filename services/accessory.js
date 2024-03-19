@@ -1,5 +1,5 @@
-const Accessory = require('../models/schemas/Accessory');
-const Car = require('../models/schemas/Car');
+const Accessory = require('../models/Accessory');
+const Car = require('../models/Car');
 const { accessoryModel } = require('../utils/model');
 async function listAccessories() {
     const accessories = await Accessory.find({});

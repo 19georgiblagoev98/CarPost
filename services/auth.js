@@ -1,4 +1,4 @@
-const User = require('../models/schemas/User');
+const User = require('../models/User');
 async function register(session, username, password) {
     const isUserExists = await User.findOne({ username });
     if (!isUserExists) {

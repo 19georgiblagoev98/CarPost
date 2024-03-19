@@ -1,4 +1,4 @@
-const Car = require('../models/schemas/Car');
+const Car = require('../models/Car');
 const { carModel } = require('../utils/model');
 async function getCar(carId) {
     const car = await Car
