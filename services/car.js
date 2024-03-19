@@ -37,7 +37,6 @@ async function editCar(carId, editedCar) {
     car.description = editedCar.description;
     car.image = editedCar.image;
     car.price = editedCar.price;
-    editedCar.accessories.map(a => car.accessories.push(a));
     return await car.save();
 }
 async function deleteCar(carId) {
