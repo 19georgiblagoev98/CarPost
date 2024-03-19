@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('../models/Accessory');
 require('../models/Car');
 require('../models/User');
-async function configDatabase() {
+module.exports = async () => {
     try {
         const databaseName = 'carpost';
         const connectionString = `mongodb://localhost:27017/${databaseName}`;
@@ -13,5 +13,4 @@ async function configDatabase() {
     } catch (err) {
         process.exit(1);
     }
-}
-module.exports = configDatabase;
+};

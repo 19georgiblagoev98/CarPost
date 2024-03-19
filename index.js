@@ -1,14 +1,15 @@
 const express = require('express');
-const configDatabase = require('./config/database');
-const configExpress = require('./config/express');
-const configService = require('./config/service');
-const configController = require('./config/controller');
+const controllerConfig = require('./config/controller');
+const databaseConfig = require('./config/database');
+const expressConfig = require('./config/express');
+const portConfig = require('./config/port');
+const serviceConfig = require('./config/service');
 start();
 async function start() {
     const app = express();
-    await configDatabase();
-    configExpress(app);
-    configService(app);
-    configController(app);
-    app.listen(3000, () => console.log('Server started on port 3000'));
+    await databaseConfig();
+    expressConfig(app);
+    serviceConfig(app);
+    controllerConfig(app);
+    portConfig(app);
 }

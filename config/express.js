@@ -1,7 +1,7 @@
 const express = require('express');
 const { create: handlebars } = require('express-handlebars');
 const session = require('express-session');
-function configExpress(app) {
+module.exports = (app) => {
     app.use(express.urlencoded({ extended: true }));
     app.use('/static', express.static('static'));
     app.set('view engine', 'hbs');
@@ -12,5 +12,4 @@ function configExpress(app) {
         saveUninitialized: true,
         cookie: { secure: 'auto' }
     }));
-}
-module.exports = configExpress;
+};

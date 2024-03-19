@@ -11,7 +11,7 @@ const editCarController = require('../controllers/car/editCar');
 const homeController = require('../controllers/main/home');
 const notFoundController = require('../controllers/main/notFound');
 const { isLoggedIn } = require('../utils/auth');
-function configController(app) {
+module.exports = (app) => {
     app.route('/attach/accessory/:id')
         .get(isLoggedIn(), attachAccessoryController.get)
         .post(isLoggedIn(), attachAccessoryController.post);
@@ -50,5 +50,4 @@ function configController(app) {
         .post(isLoggedIn(), editCarController.post);
     app.get('/', homeController.get);
     app.all('*', notFoundController.get);
-}
-module.exports = configController;
+};
